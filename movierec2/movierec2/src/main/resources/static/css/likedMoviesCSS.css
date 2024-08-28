@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movieBox {
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 16px;
+    width: 180px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+
+
+.movieBox img {
+    max-width: 100%;
+    border-radius: 0px;
+}
+
+.movieBox h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #444;
+}
+
+.movieBox p {
+    font-size: 14px;
+    color: #666;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.likeButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.likeButton:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .movieBox {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .movieBox {
+
+    }
+}
+
+@media (min-width: 1025px) {
+    .movieBox {
+
+    }
+}
