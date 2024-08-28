@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Liked Movies</title>
+</head>
+<body>
+<h1>My Liked Movies</h1>
+<ul>
+    <li th:each="movie : ${movies}">
+        <img th:src="'https://image.tmdb.org/t/p/w200/' + ${movie.poster_path}" alt="Movie Poster"/>
+        <h2 th:text="${movie.title}">Movie Title</h2>
+        <p th:text="${movie.overview}">Movie Overview</p>
+    </li>
+</ul>
+</body>
+</html>
