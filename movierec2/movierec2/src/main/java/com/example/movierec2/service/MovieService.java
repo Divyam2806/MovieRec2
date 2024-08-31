@@ -41,7 +41,6 @@ public class MovieService {
             if (!user.getLikedMovies().contains(movie)) {
                 user.getLikedMovies().add(movie);
                 userRepository.save(user);
-                System.out.println("User " + user.getUsername() + " liked movie with ID: " + movieId);
 
             }
         }

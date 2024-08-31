@@ -60,7 +60,7 @@ public class MovieController {
             movieRepository.save(movie);
             }
         }
-        return "movieList";
+        return "popularMovieList";
     }
 
     @PostMapping("/like")
