@@ -1,9 +1,15 @@
 package com.example.movierec2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Movie {
@@ -14,8 +20,14 @@ public class Movie {
     private String releaseDate;
     private String posterPath;
 
+    @ManyToMany
+    @JoinTable(
+            name = "movie_genre",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genres = new ArrayList<>();
+
     //private String overview;
-    //private String genre;
     //private String director;
 
     public long getId() {
@@ -50,6 +62,14 @@ public class Movie {
 
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
     }
 }
 

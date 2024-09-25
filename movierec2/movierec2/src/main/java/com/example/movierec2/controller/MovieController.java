@@ -15,10 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/movies")
@@ -51,7 +51,7 @@ public class MovieController {
 
     @GetMapping("/popular")
     public String showAndSavePopularMovies(Model model) {
-        List<MovieDto> movies = movieService.getPopularMovies();
+        List<MovieDto> movies = movieService.getPopularMoviesInDtoFormat();
         model.addAttribute("movies", movies);
         for (MovieDto movieDto : movies) {
             Movie movie = movieService.convertDtoToEntity(movieDto);
