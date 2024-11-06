@@ -1,7 +1,9 @@
 package com.example.movierec2.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.example.movierec2.Genre;
 import com.example.movierec2.Movie;
 import com.example.movierec2.User;
 import com.example.movierec2.repository.MovieRepository;
@@ -34,4 +36,23 @@ public class UserService {
         User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
         return user.getLikedMovies();
     }
+
+    public List<Genre> getUserPreferredGenres(User user) {
+        return user.getLikedMovies().stream()
+                   .flatMap(movie -> movie.getGenres().stream())
+                   .collect(Collectors.toList());
+    }
+
+    public List<Movie> getSuggestedMovies(User user) {
+        List<Long> likedMovieIds = user.getLikedMovies().stream()
+                                       .map(Movie::getId)
+                                       .toList();
+
+        List<Genre> preferredGenres = getUserPreferredGenres(user);
+
+        return movieRepository.findMoviesByGenresIn(preferredGenres).stream()
+                              .filter(movie -> !likedMovieIds.contains(movie.getId()))
+                              .collect(Collectors.toList());
+    }
+
 }
